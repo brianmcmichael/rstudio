@@ -37,7 +37,7 @@ core::Error readSecureKeyFile(const std::string& file, std::string* pContents)
                                        .complete(file);
    }
    else
-      secureKeyPath = core::FilePath("/tmp/rstudio-server").complete(file);
+      secureKeyPath = core::FilePath("/tmp/rstudio-server/" + boost::lexical_cast<std::string>(::geteuid())).complete(file);
 
    // read file if it already exists
    if (secureKeyPath.exists())
